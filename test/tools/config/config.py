@@ -100,15 +100,15 @@ class Config:
             'id': None,
             'ssh_key_name': self.generated_key_name(),
             'userdata': self.default_user_data(),
-            'plan': 'c1.small.x86',
+            'plan': 'c3.small.x86',
             'operating_system': 'ubuntu_18_04',
             'metro': 'sv',
-            'facility': 'ewr1',
+            'facility': 'am6',
             'billing_cycle': 'hourly'
         }
 
     def default_user_data(self):
-        files = ["hack/scripts/bootstrap.sh", "test/tools/config/userdata.sh"]
+        files = ["hack/scripts/bootstrap.sh", "hack/scripts/direct_lvm.sh", "test/tools/config/userdata.sh"]
         userdata = ""
         for file in files:
             with open(self.base + "/" + file) as f:
